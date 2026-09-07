@@ -2,9 +2,6 @@
 import dbus, subprocess, re, sys, time, os
 from pathlib import Path
 
-RESET = "\033[0m"; BOLD = "\033[1m"
-CYAN = "\033[96m"; GREEN = "\033[92m"; YELLOW = "\033[93m"; RED = "\033[91m"
-
 def run(cmd, timeout=10):
     try:
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
@@ -59,10 +56,11 @@ def send_vcard(mac, alias):
         print(f"{GREEN}[+] vCard enviada. Revisa la notificación en el teléfono.{RESET}")
     except Exception as e:
         print(f"{RED}[!] Error: {e}{RESET}")
-        print(f"{YELLOW}[*] Si aparece 0x53, elimina el emparejamiento anterior y asegúrate de que el Bluetooth esté visible.{RESET}")
+        print(f"{YELLOW}[*] Si aparece 0x53, elimina el emparejamiento anterior y asegúrate de que el 
+        Bluetooth esté visible.{RESET}")
 
 def main():
-    alias = "Has sido jakiado por la grasa"
+    alias = "Has sido jakiado"
     change_alias(alias)
     devices = scan()
     if not devices:
